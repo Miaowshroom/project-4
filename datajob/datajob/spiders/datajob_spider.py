@@ -9,7 +9,7 @@ class DatajobSpider(scrapy.Spider):
     name = "datajob"
     allowed_domains = ["mycareersfuture.sg"]
     start_urls = [
-        "https://www.mycareersfuture.sg/search?search=Data%20Analyst&salary=1000&sortBy=min_monthly_salary&page=0"
+        "https://www.mycareersfuture.sg/search?search=Data&salary=1000&sortBy=relevancy&page=0"
     ]
 
 
@@ -18,14 +18,14 @@ class DatajobSpider(scrapy.Spider):
         chromedriver = "D:\GA\project_submission\project-4\chromedriver\chromedriver.exe"
         os.environ["webdriver.chrome.driver"] = chromedriver
         self.driver = webdriver.Chrome(executable_path="D:\GA\project_submission\project-4\chromedriver\chromedriver.exe")
-        self.search_url_base = "https://www.mycareersfuture.sg/search?search=Data%20Analyst&salary=1000&sortBy=min_monthly_salary&page="
+        self.search_url_base = "https://www.mycareersfuture.sg/search?search=Data&salary=1000&sortBy=relevancy&page="
 
     def parse(self, response):
         items = []
         page_current = 0
         stop = False
         while (not stop) :
-            if page_current>=100:
+            if page_current>=250:
             	stop = True
             	break
 
